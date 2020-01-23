@@ -40,7 +40,7 @@
 
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <a class="navbar-brand" href="#">PhotoStack Classic</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -77,22 +77,30 @@
             <div class="col-lg col-md-6">
                 <!-- Temporary text for when no photos are imported -->
                 <div class="card photostack-preview-card">
-                    <div class="card-header">
-                        Image preview
-                    </div>
                     <div class="card-body" style="padding: 0">
                         <div class="text-center" id="photostack-editor-preview">
                             <p><br />A preview of your settings will appear here once you import some images.</p>
                         </div>
                     </div>
+                    <div class="card-footer bg-transparent">
+                        <small class="text-muted">Preview is limited to 800px wide.</small>
+                    </div>
                 </div>
             </div>
             <!-- Settings panel container -->
             <div class="col-lg-4 col-md-6">
-                <!-- Resize card -->
+                <!-- Info card -->
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Scaling</h5>
+                        You are using PhotoStack Classic, an alternate version of PhotoStack designed for legacy web browsers and platforms. Click <a href="#" data-toggle="modal" data-target="#photostack-classic-info-modal">here</a> for more information.
+                    </div>
+                </div>
+                <!-- Resize card -->
+                <div class="card">
+                    <div class="card-header">
+                        Resize
+                    </div>
+                    <div class="card-body">
                         <p>
                             <div class="input-group mb-3">
                                 <input type="number" class="form-control" placeholder="Image width (px)" aria-label="Enter image URL" aria-describedby="photostack-import-url" id="photostack-image-width" autocomplete="off">
@@ -111,8 +119,10 @@
                 </div>
                 <!-- Watermarks card-->
                 <div class="card">
+                    <div class="card-header">
+                        Watermark
+                    </div>
                     <div class="card-body">
-                        <h5 class="card-title">Watermark</h5>
                         <p>Create and edit watermarks from <a href="watermark.html">the watermarks page</a>.</p>
                         <p><select class="custom-select" id="photostack-watermark-select" autocomplete="off">
                                 <option selected value="no-watermark">No watermark</option>
@@ -122,8 +132,10 @@
                 </div>
                 <!-- File options -->
                 <div class="card">
+                    <div class="card-header">
+                        Export
+                    </div>
                     <div class="card-body">
-                        <h5 class="card-title">Exporting</h5>
                         <div class="form-group">
                             <label for="photostack-file-format">File format</label>
                             <select class="form-control" id="photostack-file-format" autocomplete="on">
@@ -148,8 +160,10 @@
                 </div>
                 <!-- Other options card-->
                 <div class="card">
+                    <div class="card-header">
+                        Miscellaneous
+                    </div>
                     <div class="card-body">
-                        <h5 class="card-title">Miscellaneous</h5>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="checkbox" id="photostack-exif" checked disabled>
                             <label class="form-check-label" for="photostack-exif">Remove EXIF data</label>
@@ -191,6 +205,24 @@
             </div>
         </div>
     </div>
+    <!-- Welcome modal -->
+    <div class="modal fade" id="photostack-classic-info-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="photostack-export-modal-label">About PhotoStack Classic</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>PhotoStack Classic is a variant of PhotoStack intended for use with legacy web browsers and platforms, including Internet Explorer (10+), Edge on Windows 10 Mobile, and Safari on old iOS devices. Some features in the primary PhotoStack web app are unavailable in the Classic app.</p>
+                    <p>Watermark files created with newer versions of PhotoStack can be imported in Classic, and vice-versa.</p>
+                    <p>You can access the main PhotoStack application from <a href="https://photostack.app" target="_blank">photostack.app</a>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Import modal -->
     <div class="modal fade" id="photostack-import-modal" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="false" data-backdrop="static">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -219,7 +251,7 @@
                     </p>
                     <hr>
                     <p>
-                        <button class="btn btn-primary btn-block" id="photostack-import-zip-btn" type="button">Import images from ZIP/container file <span class="badge badge-secondary">New</span></button>
+                        <button class="btn btn-primary btn-block" id="photostack-import-zip-btn" type="button">Import images from ZIP/container file</button>
                     </p>
                     <p style="text-align: center" class="small">Supported file types: ZIP, MS Office (DOCX, PPTX, XLSX)</p>
                 </div>
@@ -352,7 +384,6 @@
     <img src="watermark.html" style="display:none">
     <img src="feedback.html" style="display:none">
     <img src="donate.html" style="display:none">
-    <img src="v1/index.html" style="display:none">
     <!--<![endif]-->
 </body>
 

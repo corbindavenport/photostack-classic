@@ -658,18 +658,3 @@ if (localStorage['welcome-editor'] != 'true') {
         localStorage['welcome-editor'] = 'true'
     })
 }
-
-// API support
-// See readme.md in v1 folder for more information
-if (getUrlVars()['import']) {
-    // Create array of URLs to import
-    var imageArray = getUrlVars()['import'].split(',')
-    // Filter out empty items
-    imageArray = imageArray.filter(Boolean)
-    // Import the images
-    imageArray.forEach(function (url) {
-        importWebImage(decodeURIComponent(url))
-    })
-    // Remove parameters from URL
-    window.history.replaceState({}, document.title, document.URL.substring(0, document.URL.indexOf('?')))
-}
