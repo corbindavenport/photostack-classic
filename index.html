@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>PhotoStack - Batch photo editor, add watermark to photos, and more</title>
+    <meta name="description" content="Convert, resize, and add watermarks to images all in your web browser.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/photostack.css">
+    <!-- Google Analytics and scripts -->
+    <script async src="//www.googletagmanager.com/gtag/js?id=UA-59452245-5"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-59452245-5');
+    </script>
+    <script src="js/shared.js"></script>
+    <!-- Icons and theme -->
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="mask-icon" href="img/safari-pinned-tab.svg" color="#26a599">
+    <link rel="shortcut icon" href="favicon.ico">
+    <meta name="msapplication-TileColor" content="#292929">
+    <meta name="msapplication-config" content="browserconfig.xml">
+    <meta name="theme-color" content="#222">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #222 !important">
+        <a class="navbar-brand" href="index.html">PhotoStack</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="editor.html">Editor</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="watermark.html">Watermarks</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="feedback.html">Feedback</a>
+                </li>
+                <li class="nav-item photostack-android-hide">
+                    <a class="nav-link" href="#donate">Donate</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Main container -->
+    <main role="main">
+
+        <section class="jumbotron text-center bg-light" style="border-radius: 0">
+            <div class="container">
+                <h1 class="jumbotron-heading">The ultimate batch photo editor.</h1>
+                <p class="lead text-muted">PhotoStack is an open-source batch photo editor that runs entirely on
+                    the web, complete with watermarking support and compatibility with all major browsers.</p>
+                <p>
+                    <!--[if IE]>
+                        <div class="alert alert-danger" role="alert">
+                            <b>PhotoStack does not work on Internet Explorer 9 and older.</b> Please upgrade to Internet
+                            Explorer 10, or download <a href="https://www.mozilla.org/en-US/firefox/"
+                                target="_blank">Mozilla Firefox</a> or <a href="https://www.google.com/chrome/"
+                                target="_blank">Google Chrome</a>.
+                        </div>
+                        <style>
+                            .photostack-open-button {
+                                display: none
+                            }
+                        </style>
+                    <![endif]-->
+                    <a href="editor.html" class="btn btn-primary btn-lg photostack-open-button">Open PhotoStack</a>
+                    <a href="https://play.google.com/store/apps/details?id=com.photostack.android" target="_blank" class="btn btn-primary btn-lg photostack-open-button">Get PhotoStack for Android</a>
+                </p>
+            </div>
+        </section>
+
+        <div class="container">
+
+
+            <div class="row">
+                <div class="col-sm">
+                    <p>
+                        <h3>Feature-packed</h3>
+                    </p>
+                    <p>PhotoStack can import multiple photos from your device, or from an external web address. From
+                        there, you can resize images, add a watermark, and remove EXIF data.</p>
+                    <p>Once you're done editing, you can select your desired image format and quality, and save the
+                        images to your device.</p>
+                </div>
+                <div class="col-sm">
+                    <p>
+                        <h3>Powerful watermarking</h3>
+                    </p>
+                    <p>If you need to protect your images, you can easily create watermarks in PhotoStack for later use.
+                        You can set the image, positioning, opacity, size, and more. If you've ever used Adobe
+                        Lightroom, you'll feel right at home.</p>
+                    <p>Once you're done creating a watermark, you can save it to your device's local storage for later
+                        use, and even export the data to a file for use on another device.</p>
+                </div>
+                <div class="col-sm">
+                    <p>
+                        <h3>Free as in freedom</h3>
+                    </p>
+                    <p>PhotoStack doesn't lock you down to certain platforms or require a monthly subscription. It runs on everything with a modern web browser.</p>
+                    <p>All the source code is <a href="https://github.com/corbindavenport/photostack"
+                            target="_blank">available on GitHub</a> under the GPLv3 license. If you're a developer, you
+                        can help fix bugs, or even create your own fork of PhotoStack.</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm">
+                    <p>
+                        <h3>Privacy-first</h3>
+                    </p>
+                    <p>All image processing is done locally in your browser. Your images are never uploaded anywhere,
+                        and the only data collected by PhotoStack is basic analytics.</p>
+                </div>
+                <div class="col-sm">
+                    <p>
+                        <h3>Offline support</h3>
+                    </p>
+                    <p>PhotoStack can function entirely offline on most browsers, thanks to a web technology called
+                        Service Workers. When you run PhotoStack for the first time, the app is saved to your device's
+                        storage, so typing in "photostack.app" will always work — even when you're away from Wi-Fi.</p>
+                </div>
+                <div class="col-sm">
+                    <p>
+                        <h3>Wide compatibility</h3>
+                    </p>
+                    <p>PhotoStack works on any modern browser or platform that supports modern web features. It has been
+                        tested to work on Chrome, Firefox, Opera, Edge, and even Internet Explorer 10+.</p>
+                    <p>If you're in a pinch and need to edit pictures on the go, PhotoStack also works on mobile
+                        devices. You can even add it to your home screen on iOS and Android.</p>
+                </div>
+            </div>
+
+            <div class="row photostack-android-hide">
+                <div class="col">
+                    <p>
+                        <h3 id="donate">Support development</h3>
+                    </p>
+                    <p>PhotoStack was developed entirely in my spare time, over the course of many hours. If you enjoy
+                        using PhotoStack, please consider donating with PayPal or Patreon. It would mean a lot!</p>
+                    <div class="row">
+                        <div class="col-6">
+                            <p>
+                                <a class="btn btn-success btn-block" href="https://www.patreon.com/corbindavenport"
+                                    target="_blank" role="button">Donate via Patreon</a>
+                            </p>
+                        </div>
+                        <div class="col-6">
+                            <p>
+                                <a class="btn btn-success btn-block"
+                                    href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=4SZVSMJKDS35J&lc=US&item_name=PhotoStack%20Donation&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted"
+                                    target="_blank" role="button">Donate via PayPal</a>
+                            </p>
+                        </div>
+                    </div>
+                    <p>If you're unable to contribute financially, telling your friends about PhotoStack and <a
+                            href="https://github.com/corbindavenport/photostack" target="_blank">starring it on
+                            GitHub</a> is also greatly appreciated!</p>
+                </div>
+            </div>
+
+    </main>
+
+    <footer class="text-muted" style="border-top: 5px solid #303030; padding-top: 10px;">
+        <div class="container">
+            <p>PhotoStack uses components from <a href="https://jquery.com/" target="_blank">jQuery</a>, <a
+                    href="https://getbootstrap.com" target="_blank">Bootstrap</a>, <a
+                    href="https://github.com/eligrey/FileSaver.js/">FileSaver.js</a>, <a
+                    href="https://github.com/eligrey/canvas-toBlob.js">canvas-toBlob.js</a>, <a
+                    href="https://stuk.github.io/jszip/" target="_blank">JSZip</a>, and <a href="https://modernizr.com/"
+                    target="_blank">Modernizr</a>. PhotoStack icon is from the <a
+                    href="https://github.com/OrancheloTeam/oranchelo-icon-theme" target="_blank">Oranchelo icon
+                    theme</a>.</p>
+        </div>
+    </footer>
+
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,163 @@
+nav, .photostack-mobile-toolbar {
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+}
+
+nav .navbar-brand {
+    padding-left: 50px;
+    background: url('/img/icon.svg') left center no-repeat;
+    background-size: contain;
+}
+
+#photostack-watermark-preview, #photostack-editor-preview img {
+    max-width: 100%;
+}
+
+#photostack-watermark-preview {
+    border-bottom-right-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+}
+
+#photostack-original-container, #photostack-canvas-container, #photostack-watermark-sample, #photostack-watermark-img, #photostack-import-file, #photostack-watermark-file-import, #photostack-import-zip {
+    display: none;
+}
+
+.card {
+    margin-bottom: 15px;
+}
+
+.btn-dropbox {
+    background: #0061fe;
+}
+
+.btn-dropbox:hover {
+    background: #004cc7;
+}
+
+.toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    color: #000;
+    z-index: 100;
+    display: none;
+}
+
+.toast .close {
+    color: #000;
+}
+
+.photostack-preview-card {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 90px;
+}
+
+hr {
+    border-color: #444;
+}
+
+/* Styles for paid app */
+
+.photostack-android-show, .photostack-android .photostack-android-hide {
+    display: none;
+}
+
+.photostack-android .photostack-android-show, .photostack-android-hide {
+    display: block;
+}
+
+/* Mobile toolbar */
+
+.photostack-mobile-toolbar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #303030;
+    z-index: 200;
+    padding: 10px 0 10px 0;
+}
+
+/* Styles for large devices */
+
+@media (min-width: 992px) {
+
+    .photostack-preview-card img {
+        max-height: calc(100vh - 160px);
+    }
+
+    .navbar .form-inline:last-of-type {
+        margin-left: 10px;
+    }
+
+}
+
+/* Styles for medium/small/x-small devices */
+
+@media (max-width: 991.98px) {
+
+    .photostack-preview-card img {
+        max-height: 60vh;
+    }
+
+    /* Hide in-nav buttons on mobile, in favor of floating toolbar */
+    
+    nav .form-inline {
+        display: none;
+    }
+
+    /* Don't allow toasts to cover floating toolbar */
+
+    .toast {
+        bottom: 80px;
+    }
+
+    /* Fix bottom of container being cut off by mobile toolbar */
+
+    .col-lg-4 {
+        padding-bottom: 60px;
+    }
+
+}
+
+/* Styles for small/x-small devices */
+
+@media (max-width: 767.98px) {
+
+    .photostack-preview-card {
+        position: initial;
+    }
+
+    .toast {
+        left: 0px;
+        right: 0px;
+        bottom: 58px;
+        max-width: none;
+        border: 0;
+        margin: 0 !important;
+        border-radius: 0;
+    }
+
+}
+
+/* Hide warning about Promises and progress bar on browsers that support Promises */
+
+html.promises #photostack-promises-alert, html.promises .photostack-export-modal-loading .progress {
+    display: none !important;
+}
+
+/* Don't show spinner on browsers that don't support Promises */
+
+html.no-promises .photostack-export-modal-loading .export-spinner {
+    display: none !important;
+}
+
+/* Fix for Internet Explorer stretching preview windows */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    #photostack-watermark-preview, #photostack-editor-preview img {
+        width: 100% !important;
+        height: 100% !important;
+    }
+ }
