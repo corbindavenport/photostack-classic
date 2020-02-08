@@ -23,7 +23,6 @@
 
         gtag('config', 'UA-59452245-6');
     </script>
-    <script src="js/shared.js"></script>
     <!-- Icons and theme -->
     <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
@@ -56,7 +55,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="feedback.html">Feedback</a>
                 </li>
-                <li class="nav-item photostack-android-hide">
+                <li class="nav-item">
                     <a class="nav-link" href="donate.html">Donate</a>
                 </li>
             </ul>
@@ -101,14 +100,12 @@
                         Resize
                     </div>
                     <div class="card-body">
-                        <p>
-                            <div class="input-group mb-3">
-                                <input type="number" class="form-control" placeholder="Image width (px)" aria-label="Enter image URL" aria-describedby="photostack-import-url" id="photostack-image-width" autocomplete="off">
-                                <div class="input-group-append">
-                                    <button class="btn btn-secondary" type="button" id="photostack-image-width-button">Resize</button>
-                                </div>
+                        <div class="input-group mb-3">
+                            <input type="number" class="form-control" placeholder="Image width (px)" aria-label="Enter image URL" aria-describedby="photostack-import-url" id="photostack-image-width" autocomplete="off">
+                            <div class="input-group-append">
+                                <button class="btn btn-secondary" type="button" id="photostack-image-width-button">Resize</button>
                             </div>
-                        </p>
+                        </div>
                         <p>
                             <button class="btn btn-secondary btn-block" type="button" id="photostack-reset-image-width-button">Reset image scale</button>
                         </p>
@@ -218,7 +215,7 @@
                 <div class="modal-body">
                     <p>PhotoStack Classic is a variant of PhotoStack intended for use with legacy web browsers and platforms, including Internet Explorer (10+), Edge on Windows 10 Mobile, and Safari on old iOS devices. Some features in the primary PhotoStack web app are unavailable in the Classic app.</p>
                     <p>Watermark files created with newer versions of PhotoStack can be imported in Classic, and vice-versa.</p>
-                    <p class="photostack-android-hide">You can access the main PhotoStack application from <a href="https://photostack.app" target="_blank">photostack.app</a>.</p>
+                    <p>You can access the main PhotoStack application from <a href="https://photostack.app" target="_blank">photostack.app</a>.</p>
                 </div>
             </div>
         </div>
@@ -315,7 +312,7 @@
                             </div>
                         </div>
                     </p>
-                    <p class="photostack-android-hide text-muted" style="text-align: center;">
+                    <p class="text-muted" style="text-align: center;">
                         Some browsers throttle background windows and tabs. To speed up exports, don't minimize PhotoStack or switch to another tab/window.
                     </p>
                 </div>
@@ -330,16 +327,13 @@
                 </div>
                 <div class="modal-body">
                     <p>
-                        <button type="button" id="photostack-export-web-share-button" class="btn btn-block btn-success">Share to installed application</button>
-                    </p>
-                    <p>
                         <button type="button" id="photostack-export-separate-button" class="btn btn-block btn-success">Download as individual files</button>
                     </p>
-                    <p class="text-muted photostack-android-hide" style="text-align:center">Downloading individual files doesn't work correctly in some browsers. If you experience problems, use one of the other options.</p>
+                    <p class="text-muted" style="text-align:center">Downloading individual files doesn't work correctly in some browsers. If you experience problems, use one of the other options.</p>
                     <p>
                         <button type="button" id="photostack-export-zip-button" class="btn btn-block btn-success">Download as ZIP</button>
                     </p>
-                    <p class="photostack-android-hide" style="text-align: center">If you found PhotoStack useful, please donate via <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=4SZVSMJKDS35J&lc=US&item_name=PhotoStack%20Classic%20Donation&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted" target="_blank">PayPal</a> or <a href="https://www.patreon.com/corbindavenport" target="_blank">Patreon</a> to help support the project!</p>
+                    <p style="text-align: center">If you found PhotoStack useful, please donate via <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=4SZVSMJKDS35J&lc=US&item_name=PhotoStack%20Classic%20Donation&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted" target="_blank">PayPal</a> or <a href="https://www.patreon.com/corbindavenport" target="_blank">Patreon</a> to help support the project!</p>
                 </div>
             </div>
         </div>

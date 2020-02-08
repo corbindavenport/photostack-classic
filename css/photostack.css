@@ -52,16 +52,6 @@ hr {
     border-color: #444;
 }
 
-/* Styles for paid app */
-
-.photostack-android-show, .photostack-android .photostack-android-hide {
-    display: none;
-}
-
-.photostack-android .photostack-android-show, .photostack-android-hide {
-    display: block;
-}
-
 /* Mobile toolbar */
 
 .photostack-mobile-toolbar {
@@ -80,6 +70,7 @@ hr {
 
     .photostack-preview-card img {
         max-height: calc(100vh - 160px);
+        width: auto;
     }
 
     .navbar .form-inline:last-of-type {
@@ -148,10 +139,19 @@ html.no-promises .photostack-export-modal-loading .export-spinner {
     display: none !important;
 }
 
-/* Fix for Internet Explorer stretching preview windows */
+
+/* Internet Explorer fixes */
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-    #photostack-watermark-preview, #photostack-editor-preview img {
+
+    /* Fix for stretching preview windows */
+    #photostack-watermark-preview {
         width: 100% !important;
         height: 100% !important;
     }
- }
+
+    /* Hide position:sticky margin on preview card because IE doesn't support sticky */
+    .photostack-preview-card {
+        top: 0;
+    }
+
+}

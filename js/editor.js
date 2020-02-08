@@ -410,8 +410,6 @@ function legacyExport() {
                 // Switch modal content to finished result
                 document.querySelector('.photostack-export-modal-loading').style.display = 'none'
                 document.querySelector('.photostack-export-modal-finished').style.display = 'block'
-                // Hide native share button because it's not compatible with the legacy export function
-                document.querySelector('.photostack-web-share-btn-container').style.display = 'none'
                 // Download files separately
                 document.getElementById('photostack-export-separate-button').addEventListener('click', function () {
                     files.forEach(function (file) {
@@ -501,32 +499,9 @@ function asyncExport() {
             console.log('Generating zip...')
             zip.generateAsync({ type: 'blob' })
                 .then(function (content) {
-                    // Show badge on PWA icon
-                    if ('ExperimentalBadge' in window) {
-                        window.ExperimentalBadge.set()
-                    }
                     // Switch modal content to finished result
                     document.querySelector('.photostack-export-modal-loading').style.display = 'none'
                     document.querySelector('.photostack-export-modal-finished').style.display = 'block'
-                    // Web Share API
-                    var shareData = { files: files }
-                    if (navigator.canShare && navigator.canShare(shareData)) {
-                        document.getElementById('photostack-export-web-share-button').addEventListener('click', function () {
-                            navigator.share(shareData)
-                                .then(function () {
-                                    console.log('Share successful.')
-                                })
-                                .catch(function (e) {
-                                    console.error(e)
-                                })
-                        })
-                    } else {
-                        // Disable the native app share button if the API isn't available
-                        document.getElementById('photostack-export-web-share-button').setAttribute('disabled', 'true')
-                        $('#photostack-export-web-share-button').tooltip({
-                            title: 'Your browser or platform does not support this feature.',
-                        })
-                    }
                     // Download files separately
                     document.getElementById('photostack-export-separate-button').addEventListener('click', function () {
                         files.forEach(function (file) {
@@ -562,9 +537,6 @@ $('#photostack-export-modal').on('hidden.bs.modal', function (e) {
     // Reset title
     document.title = 'PhotoStack'
     // Clear PWA icon
-    if ('ExperimentalBadge' in window) {
-        window.ExperimentalBadge.clear()
-    }
 })
 
 // Reset import modal content when the close button is clicked
