@@ -350,14 +350,10 @@ function legacyExport() {
     if (imgNamePattern === '') {
         imgNamePattern = 'image'
     }
-    var imgCount = document.querySelectorAll('#photostack-original-container img').length
-    var progressStep = 100 / imgCount
     // Switch modal content to progress indicator
     document.querySelector('.photostack-export-modal-initial').style.display = 'none'
     // Use jQuery's show() so the progress bar is fully displayed before the image processing begins
     $('.photostack-export-modal-loading').show('fast', function () {
-        // Set title
-        document.title = 'Photostack (0%)'
         // Start rendering canvases
         var originals = document.querySelectorAll('#photostack-original-container img')
         var canvasContainer = document.getElementById('photostack-canvas-container')
@@ -398,10 +394,6 @@ function legacyExport() {
             files.push([fileName, canvasData])
             // Add image to ZIP
             zip.file(fileName, zipData, { base64: true })
-            // Update progress bar and app title
-            var progress = Math.ceil(progressStep * (i + 1))
-            document.title = 'PhotoStack (' + progress + '%)'
-            document.getElementById('photostack-zip-progress').style.width = progress + '%'
         })
         // Generate zip
         console.log('Generating zip...')
@@ -412,10 +404,20 @@ function legacyExport() {
                 document.querySelector('.photostack-export-modal-finished').style.display = 'block'
                 // Download files separately
                 document.getElementById('photostack-export-separate-button').addEventListener('click', function () {
-                    files.forEach(function (file) {
-                        // First array item is file name, second item is the data URL
-                        saveAs(file[1], file[0])
-                    })
+                    var alerted = 0
+                    try {
+                        files.forEach(function (file) {
+                            // First array item is file name, second item is the data URL
+                            saveAs(file[1], file[0])
+                        })
+                    }
+                    catch (e) {
+                        // Only send alert() once
+                        if (alerted === 0) {
+                            alert('Your browser is blocking PhotoStack from saving images as individual files. Please use the ZIP option instead.')
+                            alerted = 1
+                        }
+                    }
                 })
                 // Download as ZIP
                 document.getElementById('photostack-export-zip-button').addEventListener('click', function () {
@@ -504,9 +506,20 @@ function asyncExport() {
                     document.querySelector('.photostack-export-modal-finished').style.display = 'block'
                     // Download files separately
                     document.getElementById('photostack-export-separate-button').addEventListener('click', function () {
-                        files.forEach(function (file) {
-                            saveAs(file)
-                        })
+                        var alerted = 0
+                        try {
+                            files.forEach(function (file) {
+                                // First array item is file name, second item is the data URL
+                                saveAs(file[1], file[0])
+                            })
+                        }
+                        catch (e) {
+                            // Only send alert() once
+                            if (alerted === 0) {
+                                alert('Your browser is blocking PhotoStack from saving images as individual files. Please use the ZIP option instead.')
+                                alerted = 1
+                            }
+                        }
                     })
                     // Download as ZIP
                     document.getElementById('photostack-export-zip-button').addEventListener('click', function () {
@@ -533,10 +546,6 @@ $('#photostack-export-modal').on('hidden.bs.modal', function (e) {
     document.querySelector('.photostack-export-modal-loading').style.display = 'none'
     document.querySelector('.photostack-export-modal-finished').style.display = 'none'
     document.querySelector('.photostack-export-modal-initial').style.display = 'block'
-    document.getElementById('photostack-zip-progress').style.width = '0%'
-    // Reset title
-    document.title = 'PhotoStack'
-    // Clear PWA icon
 })
 
 // Reset import modal content when the close button is clicked
@@ -556,7 +565,7 @@ if (!Modernizr.todataurlwebp) {
 }
 
 // Allow WebP imports if the image format is supported
-Modernizr.on('webp', function(result) {
+Modernizr.on('webp', function (result) {
     if (result) {
         var formats = document.getElementById('photostack-import-file').getAttribute('accept')
         document.getElementById('photostack-import-file').setAttribute('accept', formats + ',image/webp')

@@ -127,18 +127,11 @@ hr {
 
 }
 
-/* Hide warning about Promises and progress bar on browsers that support Promises */
+/* Hide warning about Promises on browsers that support Promises */
 
-html.promises #photostack-promises-alert, html.promises .photostack-export-modal-loading .progress {
+html.promises #photostack-promises-alert {
     display: none !important;
 }
-
-/* Don't show spinner on browsers that don't support Promises */
-
-html.no-promises .photostack-export-modal-loading .export-spinner {
-    display: none !important;
-}
-
 
 /* Internet Explorer fixes */
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
