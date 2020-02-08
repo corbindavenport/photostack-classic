@@ -328,6 +328,23 @@ document.getElementById('photostack-watermark-select').addEventListener('change'
     }
 })
 
+// Clear all imported images and reset preview box
+function clearImportedImages() {
+    // Remove imported images
+    document.getElementById('photostack-original-container').innerHTML = ''
+    // Reset image count
+    globalFilesCount = 0
+    document.querySelectorAll('.photostack-image-count').forEach(function (el) {
+        el.textContent = '0'
+    })
+    var exportBtns = document.querySelectorAll('*[data-target="#photostack-export-modal"]')
+    exportBtns.forEach(function (el) {
+        el.disabled = true
+    })
+    // Reset preview
+    document.getElementById('photostack-editor-preview').innerHTML = '<p><br />A preview of your settings will appear here once you import some images.</p>'
+}
+
 // Update sample file names when text is entered in the name pattern field
 function updateSampleFileNames() {
     var text = document.getElementById('photostack-file-pattern').value
@@ -581,6 +598,12 @@ if (!Modernizr.promises) {
 }
 
 // Append event listeners to buttons and other elements
+
+document.querySelectorAll('.photostack-clear-images-btn').forEach(function (el) {
+    el.addEventListener('click', function() {
+        clearImportedImages()
+    })
+})
 
 document.querySelectorAll('.photostack-import-file-btn').forEach(function (el) {
     el.addEventListener('click', function () {
