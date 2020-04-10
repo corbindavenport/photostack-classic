@@ -110,6 +110,7 @@ function importWatermarkSettings(el) {
                 var watermarkObj = JSON.parse(reader.result)
             } catch (error) {
                 alert('Error: ' + error)
+                return
             }
             // Add watermark to localStorage
             var watermarkName = file.name.replace('.json', '')
@@ -122,6 +123,7 @@ function importWatermarkSettings(el) {
         }
         reader.onerror = function (event) {
             alert('Error: ' + event)
+            return
         }
         reader.readAsText(file)
         // Clear file select
@@ -335,6 +337,15 @@ function fixDropdownMenu(element) {
     } else {
         element.classList.remove('dropdown-menu-right')
     }
+}
+
+// Add warning for Safari users
+if (navigator.userAgent.toLowerCase().includes('safari')) {
+    var warningBlock = document.querySelector('.photostack-safari-warning')
+    warningBlock.style.display = 'block'
+    warningBlock.addEventListener('click', function() {
+        $('#photostack-safari-modal').modal('show')
+    })
 }
 
 // Append event listeners to buttons and other elements

@@ -71,6 +71,10 @@
     </nav>
     <!-- Main container -->
     <div class="container" style="margin-top: 90px">
+        <!-- Safari message -->
+        <div class="alert alert-warning photostack-safari-warning" style="display: none; cursor: pointer;">
+            Safari may periodically delete saved watermarks. Press here for more information.
+        </div>
         <div class="row photostack-watermark-row">
             <!-- Watermark select/save/delete -->
             <div class="col">
@@ -218,6 +222,24 @@
                     <p>
                         <button type="button" class="btn btn-primary btn-block" data-dismiss="modal" aria-label="Close">Let's go!</button>
                     </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Safari storage help modal -->
+    <div class="modal fade" id="photostack-safari-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="photostack-safari-modal-label">Important info for Safari</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Safari 13.1+ on macOS, as well as Safari on iOS/iPadOS 13.4+, introduced a <a href="https://webkit.org/blog/10218/full-third-party-cookie-blocking-and-more/" target="_blank">seven-day cap on all locally-stored data</a> by websites. This means that unless you open PhotoStack at least once a week, <b>your saved watermarks could be deleted</b>.</p>
+                    <p>The only way to avoid losing your watermarks is to export them as files, then re-import them after Safari wipes PhotoStack's data. To export a watermark, select it in the dropdown menu, press the Watermark button at the <span class="d-lg-none">bottom</span><span class="d-none d-lg-inline">top-right</span> of the screen, and select the export option. The import function can be found on the same button.</p>
+                    <p>In addition, PhotoStack may not be able to download files (completed images, exported watermarks, etc.) when it is opened from the iOS home screen. To get around this, open <b>edit.photostack.app</b> in your browser instead.</p>
                 </div>
             </div>
         </div>

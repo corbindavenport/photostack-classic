@@ -33,8 +33,6 @@
     <meta name="msapplication-TileColor" content="#292929">
     <meta name="msapplication-config" content="browserconfig.xml">
     <meta name="theme-color" content="#222">
-    <!-- Origin Trial for PWA badge -->
-    <meta http-equiv="origin-trial" content="AnyjaMmlj2DMRP68CPffEgK4gEWylOwdJJIfO+GS6J7b+bMSN4mlLYWCAtU0AAByk6ls1nhaqG2jATeq+bDHUwcAAABPeyJvcmlnaW4iOiJodHRwczovL3Bob3Rvc3RhY2suYXBwOjQ0MyIsImZlYXR1cmUiOiJCYWRnaW5nIiwiZXhwaXJ5IjoxNTcxMDk3NjAwfQ==">
 </head>
 
 <body>
@@ -97,6 +95,10 @@
                     <div class="card-body">
                         You are using PhotoStack Classic, an alternate version of PhotoStack designed for legacy web browsers and platforms. Click <a href="#" data-toggle="modal" data-target="#photostack-classic-info-modal">here</a> for more information.
                     </div>
+                </div>
+                <!-- Safari message -->
+                <div class="alert alert-warning photostack-safari-warning" style="display: none; cursor: pointer;">
+                    Safari may periodically delete PhotoStack's data, including saved watermarks. Press here for more information.
                 </div>
                 <!-- Resize card -->
                 <div class="card">
@@ -209,7 +211,7 @@
             </div>
         </div>
     </div>
-    <!-- Welcome modal -->
+    <!-- Classic info modal -->
     <div class="modal fade" id="photostack-classic-info-modal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
