@@ -340,7 +340,8 @@ function fixDropdownMenu(element) {
 }
 
 // Add warning for Safari users
-if (navigator.userAgent.toLowerCase().includes('safari')) {
+var ifSafari = (navigator.userAgent.includes('Safari') && (!navigator.userAgent.includes('Chrome')))
+if (ifSafari) {
     var warningBlock = document.querySelector('.photostack-safari-warning')
     warningBlock.style.display = 'block'
     warningBlock.addEventListener('click', function() {
