@@ -59,6 +59,35 @@ function applyCanvasSettings(canvas, originalImage) {
         // Resizing the canvas wipes its contents, so we need to re-draw the image
         canvas.getContext('2d').drawImage(originalImage, 0, 0, canvas.width, canvas.height)
     }
+    // Apply border
+    if (document.getElementById('photostack-border-width').value != '0') {
+        var borderSize = document.getElementById('photostack-border-width').value
+        var borderColor = document.getElementById('photostack-border-color').value
+        // Top border
+        canvas.getContext("2d").beginPath()
+        canvas.getContext("2d").lineWidth = borderSize
+        canvas.getContext("2d").strokeStyle = borderColor
+        canvas.getContext("2d").rect(0, 0, canvas.width, borderSize)
+        canvas.getContext("2d").stroke()
+        // Bottom border
+        canvas.getContext("2d").beginPath()
+        canvas.getContext("2d").lineWidth = borderSize
+        canvas.getContext("2d").strokeStyle = borderColor
+        canvas.getContext("2d").rect(0, (canvas.height - borderSize), canvas.width, borderSize)
+        canvas.getContext("2d").stroke()
+        // Left border
+        canvas.getContext("2d").beginPath()
+        canvas.getContext("2d").lineWidth = borderSize
+        canvas.getContext("2d").strokeStyle = borderColor
+        canvas.getContext("2d").rect(0, 0, borderSize, canvas.height)
+        canvas.getContext("2d").stroke()
+        // Right border
+        canvas.getContext("2d").beginPath()
+        canvas.getContext("2d").lineWidth = borderSize
+        canvas.getContext("2d").strokeStyle = borderColor
+        canvas.getContext("2d").rect((canvas.width - borderSize), 0, borderSize, canvas.height)
+        canvas.getContext("2d").stroke()
+    }
     // Apply watermark
     if (document.getElementById('photostack-watermark-img').hasAttribute('src')) {
         var watermark = document.getElementById('photostack-watermark-img')
@@ -600,7 +629,7 @@ if (!Modernizr.promises) {
 // Append event listeners to buttons and other elements
 
 document.querySelectorAll('.photostack-clear-images-btn').forEach(function (el) {
-    el.addEventListener('click', function() {
+    el.addEventListener('click', function () {
         clearImportedImages()
     })
 })
@@ -643,6 +672,14 @@ document.getElementById('photostack-image-width-button').addEventListener('click
 
 document.getElementById('photostack-reset-image-width-button').addEventListener('click', function () {
     document.getElementById('photostack-image-width').value = ''
+    renderPreviewCanvas()
+})
+
+document.getElementById('photostack-border-width').addEventListener('change', function () {
+    renderPreviewCanvas()
+})
+
+document.getElementById('photostack-border-color').addEventListener('change', function () {
     renderPreviewCanvas()
 })
 
