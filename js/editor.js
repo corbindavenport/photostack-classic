@@ -589,6 +589,11 @@ document.getElementById('photostack-export-zip-btn').addEventListener('click', f
 
 // Reset export modal content when the close button is clicked
 $('#photostack-export-modal').on('hidden.bs.modal', function (e) {
+    // Clear event listeners
+    $('#photostack-export-web-share-button').replaceWith($('#photostack-export-web-share-button').clone())
+    $('#photostack-export-separate-button').replaceWith($('#photostack-export-separate-button').clone())
+    $('#photostack-export-zip-button').replaceWith($('#photostack-export-zip-button').clone())
+    // Clear content
     document.querySelector('.photostack-export-modal-loading').style.display = 'none'
     document.querySelector('.photostack-export-modal-finished').style.display = 'none'
     document.querySelector('.photostack-export-modal-initial').style.display = 'block'
