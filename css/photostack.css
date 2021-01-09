@@ -1,19 +1,16 @@
 nav, .photostack-mobile-toolbar {
-    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
     box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
 }
 
-#photostack-watermark-preview, #photostack-editor-preview img {
+#photostack-watermark-preview, #photostack-editor-preview img, #photostack-watermark-editor-preview {
     max-width: 100%;
 }
 
-#photostack-watermark-preview {
-    border-bottom-right-radius: 0.25rem;
-    border-bottom-left-radius: 0.25rem;
+#photostack-watermark-editor-preview {
+    border-radius: 0.25rem;
 }
 
-#photostack-original-container, #photostack-canvas-container, #photostack-watermark-sample, #photostack-watermark-img, #photostack-import-file, #photostack-watermark-file-import, #photostack-import-zip {
+#photostack-original-container, #photostack-canvas-container, #photostack-import-file, #photostack-watermark-file-import, #photostack-import-zip, #photostack-watermark-import-image, #photostack-watermark-cache {
     display: none;
 }
 
@@ -52,6 +49,33 @@ hr {
     border-color: #444;
 }
 
+.card .form-group:last-of-type {
+    margin-bottom: 0;
+}
+
+#photostack-watermark-manager-list {
+    margin-left: -1rem;
+    margin-right: -1rem;
+}
+
+#photostack-watermark-manager-list div:first-of-type {
+    border-top-width: 1px !important;
+}
+
+#photostack-watermark-editor-modal .modal-dialog {
+    max-width: 900px;
+}
+
+/* Styles for Android app */
+
+.photostack-android-show, .photostack-android .photostack-android-hide {
+    display: none;
+}
+
+.photostack-android .photostack-android-show, .photostack-android-hide {
+    display: inline-block;
+}
+
 /* Mobile toolbar */
 
 .photostack-mobile-toolbar {
@@ -64,18 +88,12 @@ hr {
     padding: 10px 0 10px 0;
 }
 
-.photostack-mobile-toolbar .row div {
-    padding-left: 5px;
-    padding-right: 5px;
-}
-
 /* Styles for large devices */
 
 @media (min-width: 992px) {
 
     .photostack-preview-card img {
         max-height: calc(100vh - 160px);
-        width: auto;
     }
 
     .navbar .form-inline {
@@ -114,14 +132,21 @@ hr {
         padding-bottom: 60px;
     }
 
+    /* Allow watermark editor to fill screen width */
+
+    #photostack-watermark-editor-modal .modal-dialog {
+        max-width: calc(100% - 15px);
+    }
+
 }
 
 /* Styles for small/x-small devices */
 
 @media (max-width: 767.98px) {
 
-    .photostack-preview-card {
-        position: initial;
+    .photostack-mobile-toolbar .row div {
+        padding-left: 5px;
+        padding-right: 5px;
     }
 
     .toast {
@@ -136,24 +161,21 @@ hr {
 
 }
 
-/* Hide warning about Promises on browsers that support Promises */
+/* Print styles */
 
-html.promises #photostack-promises-alert {
-    display: none !important;
+@media print {
+
+    body {
+        background: #ffffff;
+        color: #000;
+        font-size: 18px;
+    }
+
 }
 
-/* Internet Explorer fixes */
-@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-
-    /* Fix for stretching preview windows */
-    #photostack-watermark-preview {
-        width: 100% !important;
-        height: 100% !important;
-    }
-
-    /* Hide position:sticky margin on preview card because IE doesn't support sticky */
-    .photostack-preview-card {
-        top: 0;
-    }
-
+#photostack-print-preview {
+    width: auto;
+    height: auto;
+    max-width: 100vw;
+    max-height: 100vh;
 }
