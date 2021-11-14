@@ -649,10 +649,6 @@ document.getElementById('photostack-import-file').addEventListener('change', fun
     importLocalFiles(this)
 })
 
-document.getElementById('photostack-import-url-button').addEventListener('click', function () {
-    importWebImage(document.getElementById('photostack-import-url').value.trim())
-})
-
 document.querySelector('.photostack-import-dropbox-btn').addEventListener('click', function () {
     if (!Dropbox.isBrowserSupported()) {
         alert('Sorry, Dropbox does not support your web browser.')
