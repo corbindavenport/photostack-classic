@@ -162,47 +162,6 @@ function importLocalImage(file) {
     $('#photostack-import-modal').modal('hide')
 }
 
-// Add image from URL
-function importWebImage(url) {
-    // Get image
-    function downloadExternalImage(url) {
-        var image = document.createElement('img')
-        image.crossOrigin = 'anonymous'
-        image.src = url
-        // Create canvas for converting image to Data URL
-        var canvas = document.createElement("canvas")
-        image.onload = function () {
-            console.log('Loaded image URL: ' + url)
-            // Add image to canvas
-            canvas.width = image.naturalWidth
-            canvas.height = image.naturalHeight
-            canvas.getContext('2d').drawImage(image, 0, 0)
-            var data = canvas.toDataURL()
-            // Check file size of image
-            var size = new Blob([data]).size
-            if (size > 1048576) {
-                alert('Watermark must be under 1MB!')
-            } else {
-                // Save image to globalWatermark
-                globalWatermark.image = data
-                // Regenerate preview
-                renderPreviewCanvas()
-            }
-        }
-        image.onerror = function () {
-            if (!url.includes('https://cors-anywhere.herokuapp.com/')) {
-                console.log('Error loading image, trying CORS Anywhere...')
-                downloadExternalImage('https://cors-anywhere.herokuapp.com/' + url)
-            } else {
-                alert('Could not import URL.')
-            }
-        }
-    }
-    downloadExternalImage(url)
-    // Close import modal if it's still open
-    $('#photostack-import-modal').modal('hide')
-}
-
 // Add image from Dropbox
 function importDropboxImage() {
     // Set configuration for file picker
@@ -379,11 +338,6 @@ document.querySelectorAll('.photostack-import-file-btn').forEach(function(el) {
     el.addEventListener('click', function () {
         $('#photostack-import-file').click()
     })
-})
-
-document.getElementById('photostack-import-url-button').addEventListener('click', function () {
-    var url = document.getElementById('photostack-import-url').value
-    importWebImage(url)
 })
 
 document.querySelectorAll('.photostack-import-dropbox-btn').forEach(function(el) {
