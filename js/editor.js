@@ -146,7 +146,6 @@ function applyCanvasSettings(canvas, originalImage) {
 }
 
 // Render canvas of first image, apply settings, and show a preview
-// Render canvas of first image, apply settings, and show a preview
 function renderPreviewCanvas() {
     console.log('Rendering preview...');
     // Silently fail if there are no images imported
