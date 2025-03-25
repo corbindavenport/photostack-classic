@@ -146,37 +146,52 @@ function applyCanvasSettings(canvas, originalImage) {
 }
 
 // Render canvas of first image, apply settings, and show a preview
+// Render canvas of first image, apply settings, and show a preview
 function renderPreviewCanvas() {
-    console.log('Rendering preview...')
+    console.log('Rendering preview...');
     // Silently fail if there are no images imported
     if (!document.querySelectorAll('#photostack-original-container img').length) {
-        console.log('Nothing to preview.')
-        return
+        console.log('Nothing to preview.');
+        return;
     }
     // Find elements
-    var previewContainer = document.getElementById('photostack-editor-preview')
-    var originalsContainer = document.getElementById('photostack-original-container')
-    var canvasContainer = document.getElementById('photostack-canvas-container')
+    var previewContainer = document.getElementById('photostack-editor-preview');
+    var originalsContainer = document.getElementById('photostack-original-container');
+    var canvasContainer = document.getElementById('photostack-canvas-container');
     // Create canvas element for first imported image
-    var canvas = document.createElement('canvas')
-    var originalImage = originalsContainer.firstChild
+    var canvas = document.createElement('canvas');
+    var originalImage = originalsContainer.firstChild;
+
+    // Check if the image is already loaded, if not, wait for it to load.
+    if (originalImage.complete) {
+        processImage(originalImage, canvas, previewContainer, canvasContainer);
+    } else {
+        originalImage.onload = function() {
+            processImage(originalImage, canvas, previewContainer, canvasContainer);
+        };
+    }
+}
+
+function processImage(originalImage, canvas, previewContainer, canvasContainer) {
     // Add canvas element to canvas container
-    canvasContainer.appendChild(canvas)
+    canvasContainer.innerHTML = ''; // Clear previous canvas
+    canvasContainer.appendChild(canvas);
     // Resize canvas to a maximum of 800 pixels wide for faster processing
-    var resizeRatio = originalImage.naturalHeight / originalImage.naturalWidth
-    canvas.width = 800
-    canvas.height = canvas.width * resizeRatio
-    canvas.getContext('2d').drawImage(originalImage, 0, 0, canvas.width, canvas.height)
+    var resizeRatio = originalImage.naturalHeight / originalImage.naturalWidth;
+    console.log(originalImage, originalImage.naturalHeight);
+    canvas.width = 800;
+    canvas.height = canvas.width * resizeRatio;
+    canvas.getContext('2d').drawImage(originalImage, 0, 0, canvas.width, canvas.height);
     // Apply settings
-    applyCanvasSettings(canvas, originalImage)
+    applyCanvasSettings(canvas, originalImage);
     // Create image element
     if (previewContainer.querySelector('img')) {
-        previewContainer.querySelector('img').setAttribute('src', canvas.toDataURL())
+        previewContainer.querySelector('img').setAttribute('src', canvas.toDataURL());
     } else {
-        var previewImage = document.createElement('img')
-        previewImage.setAttribute('src', canvas.toDataURL())
-        previewContainer.innerHTML = ''
-        previewContainer.appendChild(previewImage)
+        var previewImage = document.createElement('img');
+        previewImage.setAttribute('src', canvas.toDataURL());
+        previewContainer.innerHTML = '';
+        previewContainer.appendChild(previewImage);
     }
 }
 
@@ -266,36 +281,6 @@ function importLocalZIP(element) {
             $('#photostack-import-modal').modal('hide')
         })
     })
-}
-
-// Add image from URL
-function importWebImage(url) {
-    // Get image
-    function addImageToCanvas(url) {
-        var image = document.createElement('img')
-        image.crossOrigin = 'anonymous'
-        image.src = url
-        image.onload = function () {
-            console.log('Loaded image URL: ' + url)
-            // Save image to originals container
-            document.getElementById('photostack-original-container').appendChild(image)
-            // Increase image counter
-            increaseImageCount(1)
-            // Generate preview
-            renderPreviewCanvas()
-        }
-        image.onerror = function () {
-            if (!url.includes('https://cors-anywhere.herokuapp.com/')) {
-                console.log('Error loading image, trying CORS Anywhere...')
-                addImageToCanvas('https://cors-anywhere.herokuapp.com/' + url)
-            } else {
-                alert('Could not import URL.')
-            }
-        }
-    }
-    addImageToCanvas(url)
-    // Close import modal if it's still open
-    $('#photostack-import-modal').modal('hide')
 }
 
 // Read watermarks from localStorage
