@@ -1,7 +1,7 @@
-nav, .photostack-mobile-toolbar {
-    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
-    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+.navbar {
+    padding: 0.5rem 0.8rem !important;
+    background-color: #343a40 !important;
+    border-bottom: 1px solid #495057 !important;
 }
 
 #photostack-watermark-preview, #photostack-editor-preview img {
@@ -51,7 +51,8 @@ hr {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #303030;
+    background-color: #343a40 !important;
+    border-top: 1px solid #495057 !important;
     z-index: 200;
     padding: 10px 0 10px 0;
 }

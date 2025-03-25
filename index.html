@@ -42,10 +42,7 @@
                     <a class="nav-link" href="watermark.html">Watermarks</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="feedback.html">Feedback</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="donate.html">Donate</a>
+                    <a class="nav-link" href="https://github.com/corbindavenport/photostack-classic/blob/master/README.md" target="_blank">Help & Info</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
@@ -81,10 +78,6 @@
             </div>
             <!-- Settings panel container -->
             <div class="col-lg-4 col-md-6 d-print-none">
-                <!-- Info card -->
-                <div class="card">
-                    <button class="btn btn-primary btn-block" type="button" data-toggle="modal" data-target="#photostack-classic-info-modal" data-backdrop="static" data-keyboard="false">PhotoStack Classic info</button>
-                </div>
                 <!-- Safari message -->
                 <div class="alert alert-warning photostack-safari-warning" style="display: none; cursor: pointer;">
                     Safari may periodically delete PhotoStack's data, including saved watermarks. Press here for more information.
@@ -104,19 +97,6 @@
                         <p style="margin-bottom: 0;">
                             <button class="btn btn-secondary btn-block" type="button" id="photostack-reset-image-width-button">Reset image size</button>
                         </p>
-                    </div>
-                </div>
-                <!-- AdSense banner -->
-                <div class="card">
-                    <div class="card-header">
-                        Advertisement
-                    </div>
-                    <div class="card-body" style="padding: 0; overflow: hidden;">
-                        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8658798838164073" data-ad-slot="2199465112" data-ad-format="auto" data-full-width-responsive="true"></ins>
-                        <script>
-                            (adsbygoogle = window.adsbygoogle || []).push({});
-                        </script>
                     </div>
                 </div>
                 <!-- Watermarks card-->
@@ -191,6 +171,9 @@
                             <input class="form-check-input" type="checkbox" id="photostack-exif" checked disabled>
                             <label class="form-check-label" for="photostack-exif">Remove EXIF data</label>
                         </div>
+                        <div class="mt-2">
+                            <a href="https://github.com/corbindavenport/photostack-classic/blob/master/PRIVACY.md" target="_blank">Privacy Policy</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -227,24 +210,6 @@
                     <p>
                         <button type="button" class="btn btn-primary btn-block" data-dismiss="modal" aria-label="Close">Let's go!</button>
                     </p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Classic info modal -->
-    <div class="modal fade" id="photostack-classic-info-modal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="photostack-export-modal-label">About PhotoStack Classic</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>You're using <b>PhotoStack Classic</b>, a variant of PhotoStack intended for use with legacy web browsers and platforms, including Internet Explorer (10+), Edge on Windows 10 Mobile, and Safari on old iOS devices. Some features in the primary PhotoStack web app are unavailable in the Classic app.</p>
-                    <p>Watermark files created with newer versions of PhotoStack can be imported in Classic, and vice-versa.</p>
-                    <p>You can access the main PhotoStack application from <a href="https://edit.photostack.app" target="_blank">edit.photostack.app</a>.</p>
                 </div>
             </div>
         </div>
@@ -389,8 +354,6 @@
     <!-- Resources that aren't used by editor page but still need to be cached by the PWA -->
     <img src="js/watermark.js" style="display:none">
     <img src="watermark.html" style="display:none">
-    <img src="feedback.html" style="display:none">
-    <img src="donate.html" style="display:none">
     <!--<![endif]-->
 </body>
 
