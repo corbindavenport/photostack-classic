@@ -21,14 +21,6 @@ nav, .photostack-mobile-toolbar {
     margin-bottom: 15px;
 }
 
-.btn-dropbox {
-    background: #0061fe;
-}
-
-.btn-dropbox:hover {
-    background: #004cc7;
-}
-
 .toast {
     position: fixed;
     bottom: 20px;

@@ -298,30 +298,6 @@ function importWebImage(url) {
     $('#photostack-import-modal').modal('hide')
 }
 
-// Add image from Dropbox
-function importDropboxImage() {
-    // Set configuration for file picker
-    options = {
-        success: function (files) {
-            // Send each URL to importWebImage function
-            files.forEach(function (file) {
-                importWebImage(file.link)
-            })
-            // Close import modal if it's still open
-            $('#photostack-import-modal').modal('hide')
-        },
-        cancel: function () {
-            // Close import modal if it's still open
-            $('#photostack-import-modal').modal('hide')
-        },
-        linkType: "direct",
-        multiselect: true,
-        extensions: ['images'],
-        folderselect: false
-    }
-    Dropbox.choose(options)
-}
-
 // Read watermarks from localStorage
 for (var i = 0; i < localStorage.length; i++) {
     if (localStorage.key(i).includes('Watermark')) {
@@ -419,7 +395,7 @@ function legacyExport() {
         })
         // Create files object
         var files = []
-        // Add canvases to ZIP and Dropbox object
+        // Add canvases to ZIP object
         var zip = new JSZip()
         var canvases = document.querySelectorAll('#photostack-canvas-container canvas')
         canvases.forEach(function (canvas, i) {
@@ -647,16 +623,6 @@ document.querySelectorAll('.photostack-import-file-btn').forEach(function (el) {
 
 document.getElementById('photostack-import-file').addEventListener('change', function () {
     importLocalFiles(this)
-})
-
-document.querySelector('.photostack-import-dropbox-btn').addEventListener('click', function () {
-    if (!Dropbox.isBrowserSupported()) {
-        alert('Sorry, Dropbox does not support your web browser.')
-    } else if (!navigator.onLine) {
-        alert('You are not connected to the internet. Connect to the internet and try again.')
-    } else {
-        importDropboxImage()
-    }
 })
 
 document.getElementById('photostack-import-zip-btn').addEventListener('click', function () {

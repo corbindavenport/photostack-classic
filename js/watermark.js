@@ -162,28 +162,6 @@ function importLocalImage(file) {
     $('#photostack-import-modal').modal('hide')
 }
 
-// Add image from Dropbox
-function importDropboxImage() {
-    // Set configuration for file picker
-    options = {
-        success: function(file) {
-            console.log(file[0])
-            importWebImage(file[0].link)
-            // Close import modal if it's still open
-            $('#photostack-import-modal').modal('hide')
-        },
-        cancel: function() {
-            // Close import modal if it's still open
-            $('#photostack-import-modal').modal('hide')
-        },
-        linkType: "direct",
-        multiselect: false,
-        extensions: ['images'],
-        folderselect: false
-    }
-    Dropbox.choose(options)
-}
-
 // Apply current settings to a canvas
 function applyWatermarkSettings(canvas) {
     // Silently return if no watermark image has been imported
@@ -337,18 +315,6 @@ document.querySelector('.photostack-watermark-delete').addEventListener('click',
 document.querySelectorAll('.photostack-import-file-btn').forEach(function(el) {
     el.addEventListener('click', function () {
         $('#photostack-import-file').click()
-    })
-})
-
-document.querySelectorAll('.photostack-import-dropbox-btn').forEach(function(el) {
-    el.addEventListener('click', function() {
-        if (!Dropbox.isBrowserSupported()) {
-            alert('Sorry, Dropbox does not support your web browser.')
-        } else if (!navigator.onLine) {
-            alert('You are not connected to the internet. Connect to the internet and try again.')
-        } else {
-            importDropboxImage()
-        }
     })
 })
 
